@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head >
+	<meta charset="utf-8">
+	<title>Lab 04</title>
+	<link rel="stylesheet" href="./css/reset.css" />
+	<link rel="stylesheet" href="./css/Lab04.css" />
+</head>
+<body>
+<header>
+	<h1>Share Your Travels</h1>
+	<p>let us know where you've been</p>
+</header>
+<main>
+	<section>
+		<form method="post" action="http://www.randyconnolly.com/tests/process.php">
+			<fieldset>
+				<legend>PHOTO DETAILS</legend>
+				<table>
+					<tr>
+						<td colspan="2">
+							<p>Title</p><input type="text" name="title" placeholder="Give your photo a descriptive name"/>
+							<p>Description</p>
+							<textarea placeholder="Adding a rich description will help with research results" rows="5"></textarea>
+						</td>
+					</tr>
+					
+					<tr>
+						<td>
+							<p>Continent</p>
+							<select>
+								<option value="Choose continent">Choose continent</option>
+								<option value="Africa">Africa</option>
+								<option value="Antarctica">Antarctica</option>
+								<option value="Asia">Asia</option>
+								<option value="Australia">Australia</option>
+								<option value="Europe">Europe</option>
+								<option value="North America">North America</option>
+								<option value="South America">South America</option>
+							</select>
+							<p>Country</p>
+							<select>
+								<option value="Choose country">Choose country</option>
+							</select>
+							<p>City</p><input type="text" name="city"/>
+						</td>
+						
+						<td>
+							<div class="box">
+								Copyright?<br/>
+								<input type="radio" name="copyright" value="All rights reserved"/>All rights reserved<br/>
+								<input type="radio" name="copyright" value="Creative Commons"/>Creative Commons
+							</div>
+							<div class="box">
+								Creative Commons Types<br/>
+								<input type="checkbox" name="types" value="Attribution"/>Attribution<br/>
+								<input type="checkbox" name="types" value="Noncommercial"/>Noncommercial<br/>
+								<input type="checkbox" name="types" value="No Derivative Works"/>No Derivative Works
+							</div>
+						</td>
+					</tr>
+					
+					<tr>
+						<td colspan="2">
+							<div class="rectangle">
+								I accept the software license <input type="checkbox"/>
+							</div>
+						</td>
+					</tr>
+					
+					<tr>
+						<td>
+							<p>Rate this photo:</p><input type="number" name="number"/>
+							<p>Color Collection:</p><input type="color" name="color"/>
+						</td>
+						<td>
+							<div class="box">
+								<p>Date Taken:</p><input type="date" name="date"/>
+								<p>Time Taken:</p><input type="time" name="time"/>
+							</div>
+						</td>
+					</tr>
+					
+					<tr>
+						<td colspan="2">
+							<div class="rectangle">
+								<input type="button" value="提交" class="rounded"/>
+								<input type="reset" value="Clear Form" class="rounded"/>
+							</div>
+						</td>
+					</tr>
+					
+				</table>
+			</fieldset>
+		</form>
+	</section>
+</main>
+
+</body>
+</html>
