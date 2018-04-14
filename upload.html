@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+	<title>Upload</title>
+</head>
+<body>
+<div class="container">
+	<div class="row form-inline text-center">
+		<div class="col-md-4 ">
+			<h1>Share Your Travels</h1>
+			<p><em>Let us know where you've been</em></p>
+		</div>
+		
+		<ul class="nav col-md-7">
+			<li class="nav-item col-md-4"><a class="nav-link" href="testBootStrap.html">Gallery</a></li>
+			<li class="nav-item col-md-4"><a class="nav-link" href="#">Feeling Lucky</a></li>
+			<li class="nav-item col-md-4"><a class="nav-link" href="#">User</a></li>
+		</ul>
+	</div>
+	
+	<main class="img-thumbnail">
+		<section class="p-3">
+			<form method="post" action="http://www.randyconnolly.com/tests/process.php">
+				<fieldset>
+					<h3>PHOTO DETAILS</h3>
+					<div class="form-group py-1">
+						<label>Title</label>
+						<input type="text" class="form-control" placeholder="Give your photo a descriptive name"/>
+					</div>
+					
+					<div class="form-group py-1">
+						<label>Description</label>
+						<textarea class="form-control" placeholder="Adding a rich description will help with research results" rows="2"></textarea>
+					</div>
+					
+					<div class="form-group py-1">
+						<label>Continent</label>
+						<select class="custom-select">
+							<option value="Choose continent">Choose continent</option>
+							<option value="Africa">Africa</option>
+							<option value="Antarctica">Antarctica</option>
+							<option value="Asia">Asia</option>
+							<option value="Australia">Australia</option>
+							<option value="Europe">Europe</option>
+							<option value="North America">North America</option>
+							<option value="South America">South America</option>
+						</select>
+					</div>
+					
+					<div class="form-group py-1">
+						<label>Country</label>
+						<select class="custom-select">
+							<option value="Choose country">Choose country</option>
+							<option value="China">...</option>
+						</select>
+					</div>
+					
+					<div class="form-group py-1">
+						<label>City</label>
+						<input type="text" class="form-control" />
+					</div>
+					
+					<div class="radio py-1">
+						Copyright?<br/>
+						<label>
+							<input type="radio" name="copyright" value="All rights reserved" checked/>
+							All rights reserved
+						</label>
+						<div class="radio">
+							<label><input type="radio" name="copyright" value="Creative Commons"/>
+								Creative Commons
+							</label>
+						</div>
+					</div>
+					
+					<div class="box py-1">
+						Creative Commons Types<br/>
+						<label class="checkbox-inline"><input type="checkbox" name="types" id="inlineCheckbox1" value="Attribution"/>Attribution<br/></label>
+						<label class="checkbox-inline"><input type="checkbox" name="types" id="inlineCheckbox2" value="Noncommercial"/>Noncommercial<br/></label>
+						<label class="checkbox-inline"><input type="checkbox" name="types" id="inlineCheckbox3" value="No Derivative Works"/>No Derivative Works</label>
+					</div>
+					
+					<div class="checkbox mt-3 mb-3">
+						<input type="checkbox"/><label>I accept the software license</label>
+					</div>
+					
+					<div class="form-row pb-3">
+						<div class="col-md-3">
+							<label>Rate this photo:</label>
+							<input type="number" class="form-control" name="number" />
+						</div>
+						<div class="col-md-8 offset-md-1">
+							<label>Color Collection:</label>
+							<input type="color" class="form-control" name="color" />
+						</div>
+					</div>
+					
+					<div class="form-row py-3">
+						<div class="col-md-6">
+							<label>Date Taken:</label>
+							<input type="date" class="form-control" name="date"/>
+						</div>
+						<div class="col-md-5 offset-md-1">
+							<label>Time Taken:</label>
+							<input type="time" class="form-control" name="time"/>
+						</div>
+					</div>
+					
+					<div class="button-group my-3">
+						<button type="submit" value="Submit" class="btn btn-secondary"/>Submit
+						<button type="reset" value="Clear" class="btn btn-secondary"/>Clear
+					</div>
+				
+				</fieldset>
+			</form>
+		</section>
+	</main>
+</div>
+
+<script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdn.bootcss.com/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://cdn.bootcss.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+</body>
+</html>
