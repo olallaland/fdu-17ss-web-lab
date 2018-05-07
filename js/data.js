@@ -4,3 +4,54 @@ const countries = [
     { name: "Italy", continent: "Europe", cities: ["Florence","Milan","Naples","Rome"], photos: ["italy1.jpg","italy2.jpg","italy3.jpg","italy4.jpg","italy5.jpg","italy6.jpg"] },
     { name: "Spain", continent: "Europe", cities: ["Almeria","Barcelona","Madrid"], photos: ["spain1.jpg","spain2.jpg"] }
 ];
+
+window.onload = func;
+function func(){
+    for (let i = 0; i < countries.length; i++){
+        let item = document.createElement("div");
+        item.setAttribute("class", "item");
+
+        let countryName = document.createElement("h2");
+        countryName.innerText = countries[i].name;
+        item.appendChild(countryName);
+
+        let continent = document.createElement("p");
+        continent.innerText = countries[i].continent;
+        item.appendChild(continent);
+
+        let innerBox1 = document.createElement("div");
+        innerBox1.setAttribute("class", "inner-box");
+        let cityName = document.createElement("h3");
+        cityName.innerText = "Cities";
+        innerBox1.appendChild(cityName);
+        let ul = document.createElement("ul");
+        for (var j in countries[i].cities){
+            let li = document.createElement("li");
+            li.innerText = countries[i].cities[j];
+            ul.appendChild(li);
+        }
+        innerBox1.appendChild(ul);
+        item.appendChild(innerBox1);
+
+        let innerBox2 = document.createElement("div");
+        innerBox2.setAttribute("class", "inner-box");
+        let popularPhoto = document.createElement("h3");
+        popularPhoto.innerText = "Popular Photos";
+        innerBox2.appendChild(popularPhoto);
+        for (var m in countries[i].photos){
+            let img = document.createElement("img");
+            img.src = "images/" + countries[i].photos[m];
+            img.setAttribute("class", "photo");
+            innerBox2.appendChild(img);
+        }
+        item.appendChild(innerBox2);
+
+        let button = document.createElement("button");
+        button.innerText = "visit";
+        item.appendChild(button);
+
+        document.getElementsByClassName("flex-container justify")[0].appendChild(item);
+    }
+}
+
+
