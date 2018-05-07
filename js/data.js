@@ -13,11 +13,8 @@ function func(){
 
         let countryName = document.createElement("h2");
         countryName.innerText = countries[i].name;
-        item.appendChild(countryName);
-
         let continent = document.createElement("p");
         continent.innerText = countries[i].continent;
-        item.appendChild(continent);
 
         let innerBox1 = document.createElement("div");
         innerBox1.setAttribute("class", "inner-box");
@@ -31,7 +28,6 @@ function func(){
             ul.appendChild(li);
         }
         innerBox1.appendChild(ul);
-        item.appendChild(innerBox1);
 
         let innerBox2 = document.createElement("div");
         innerBox2.setAttribute("class", "inner-box");
@@ -40,18 +36,20 @@ function func(){
         innerBox2.appendChild(popularPhoto);
         for (var m in countries[i].photos){
             let img = document.createElement("img");
-            img.src = "images/" + countries[i].photos[m];
             img.setAttribute("class", "photo");
+            img.setAttribute("src", "images/" + countries[i].photos[m]);
             innerBox2.appendChild(img);
         }
-        item.appendChild(innerBox2);
 
         let button = document.createElement("button");
         button.innerText = "visit";
-        item.appendChild(button);
 
+        item.appendChild(countryName);
+        item.appendChild(continent);
+        item.appendChild(innerBox1);
+        item.appendChild(innerBox2);
+        item.appendChild(button);
         document.getElementsByClassName("flex-container justify")[0].appendChild(item);
     }
 }
-
 
