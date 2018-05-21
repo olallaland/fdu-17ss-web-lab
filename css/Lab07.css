@@ -1,0 +1,26 @@
+body{
+    text-align: center;
+}
+#select1, #select2, button{
+    width: 300px;
+    margin: auto;
+}
+input{
+    margin: 5px 0;
+}
+button{
+    display: none;
+}
+table {
+    margin: 5px auto;
+}
+th{
+    background-color: grey;
+    color: whitesmoke;
+}
+td{
+    padding: 0 0.5em;
+}
+#nowTable > tr:nth-child(odd) > td{
+    background-color: lightgrey;
+}
