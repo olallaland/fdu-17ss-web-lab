@@ -170,7 +170,7 @@ function func1(){
         document.getElementById("nowTable").appendChild(trNew);
     }
     else if(index1 == 3 && isDelete == true){
-        deleteRow(tables[document.getElementById("select2").selectedIndex]);
+        deleteRow(document.getElementById("nowTable"));
     }
     else if(index1 == 4){
         deleteTable(tables[document.getElementById("select2").selectedIndex]);
