@@ -41,9 +41,12 @@ include 'travel-data.inc.php';
               /* you will need to fill this place with appropriate PHP */
               /* hint: use array and loop */
               //the next line is an example
-              //<a href="list.php?country=Canada" role="button" class="btn btn-default"> Canada</a> 
+			  //<a href="list.php?country=Canada" role="button" class="btn btn-default"> Canada</a> 
 
-
+			  sort($countries);
+              foreach($countries as $x=>$x_value){
+				echo '<a href="list.php?country='.$x_value.'" role="button" class="btn btn-default">'.$x_value.'</a>';
+			  }
               ?>
                      
         </div>               
@@ -58,19 +61,21 @@ include 'travel-data.inc.php';
           //the next lines are one of the elements
           //you need to fill the elements with data provided
 
-
-   //        <li>
-   //              <a href="detail.php?id=22" class="img-responsive">
-   //              	<img src="images/square/6114850721.jpg" alt="View of Cologne">
-   //              	<div class="caption">
-   //              		<div class="blur">
-   //              		</div>
-   //              		<div class="caption-text">
-   //              			<h1>View of Cologne</h1>
-   //              		</div>
-   //              	</div>
-   //              </a>
-			// </li>
+		  foreach($images as $i=>$i_value){
+			  echo '<li>
+						<a href="detail.php?id='.$i_value['id'].'" class="img-responsive">
+							<img src="images/square/'.$i_value['path'].'" alt="'.$i_value['title'].'">
+							<div class="caption">
+								<div class="blur">
+								</div>
+								<div class="caption-text">
+									<h1>'.$i_value['title'].'</h1>
+								</div>
+							</div>
+						</a>
+					</li>';
+		  }
+  
           ?>
 
        </ul>       
