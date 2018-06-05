@@ -3,8 +3,18 @@
 
 //****** Hint ******
 //connect database and fetch data here
+    $servername = "localhost";
+    $username = "root";
+    $password = "";
+	$dbname = "travel";
+ 
+    // create a connection
+    $conn = new mysqli($servername, $username, $password, $dbname);
 
-
+    // check connection
+    if ($conn->connect_error) {
+        die("连接失败: " . $conn->connect_error);
+    } 
 ?>
 
 <!DOCTYPE html>
@@ -29,8 +39,7 @@
 
 <body>
     <?php include 'header.inc.php'; ?>
-    
-
+    	
 
     <!-- Page Content -->
     <main class="container">
@@ -42,15 +51,15 @@
               <select name="continent" class="form-control">
                 <option value="0">Select Continent</option>
                 <?php
-                //Fill this place
-
+                //Fill this place		
+				$sql1 = "SELECT ContinentCode, ContinentName FROM Continents";
+				$result1 = $conn->query($sql1);
+				while($row = $result1->fetch_assoc()) {
+					echo '<option value=' . $row['ContinentCode'] . '>' . $row['ContinentName'] . '</option>';
+                }
+				
                 //****** Hint ******
                 //display the list of continents
-
-                while($row = $result->fetch_assoc()) {
-                  echo '<option value=' . $row['ContinentCode'] . '>' . $row['ContinentName'] . '</option>';
-                }
-
                 ?>
               </select>     
               
@@ -58,13 +67,19 @@
                 <option value="0">Select Country</option>
                 <?php 
                 //Fill this place
-
+				$sql2 = "SELECT ISO, CountryName FROM Countries";
+				$result2 = $conn->query($sql2);
+				while($row = $result2->fetch_assoc()) {
+					echo '<option value=' . $row['ISO'] . '>' . $row['CountryName'] . '</option>';
+                }
+				
                 //****** Hint ******
-                /* display list of countries */ 
+                /* display list of countries */ 								
+				
                 ?>
               </select>    
               <input type="text"  placeholder="Search title" class="form-control" name=title>
-              <button type="submit" class="btn btn-primary">Filter</button>
+              <button type="submit" class="btn btn-primary" name="filter">Filter</button>
               </div>
             </form>
 
@@ -75,7 +90,117 @@
 		<ul class="caption-style-2">
             <?php 
             //Fill this place
+			if(isset($_GET['filter'])){	
+				//filter button clicked
+				$continent = $_GET['continent'];
+				$country = $_GET['country'];
+				
+				//not selected
+				if($continent == "0" && $country == "0" ){					
+					$sql3 = "SELECT * FROM ImageDetails";
+					$result3 = $conn->query($sql3);	
+					if($result3->num_rows > 0){
+						while($row = $result3->fetch_assoc()) {
+							echo '<li>
+								<a href="detail.php?id='.$row['ImageID'].'" class="img-responsive">
+								<img src="images/square-medium/'.$row['Path'].'" alt="' .$row['Title']. '">
+								<div class="caption">
+									<div class="blur"></div>
+									<div class="caption-text">
+										<p>' .$row['Description']. '</p>
+									</div>
+								</div>
+								</a>
+							</li> ';
+						}				
+					}
+				}
+				
+				//select continent
+				else if($continent != "0" && $country == "0"){				
+					$sql4 = "SELECT * FROM ImageDetails WHERE ContinentCode = '".$continent."'";
+					$result4 = $conn->query($sql4);
+					if($result4->num_rows > 0){
+						while($row = $result4->fetch_assoc()) {
+							echo '<li>
+								<a href="detail.php?id='.$row['ImageID'].'" class="img-responsive">
+								<img src="images/square-medium/'.$row['Path'].'" alt="' .$row['Title']. '">
+								<div class="caption">
+									<div class="blur"></div>
+									<div class="caption-text">
+										<p>' .$row['Description']. '</p>
+									</div>
+								</div>
+							</a>
+						</li> ';
+						}				
+					}
+				}
+				
+				//select country
+				else if($continent == "0" && $country != "0"){						
+					$sql5 = "SELECT * FROM ImageDetails WHERE CountryCodeISO = '".$country."'";
+					$result5 = $conn->query($sql5);
+					if($result5->num_rows > 0){
+						while($row = $result5->fetch_assoc()) {
+							echo '<li>
+								<a href="detail.php?id='.$row['ImageID'].'" class="img-responsive">
+								<img src="images/square-medium/'.$row['Path'].'" alt="' .$row['Title']. '">
+								<div class="caption">
+									<div class="blur"></div>
+									<div class="caption-text">
+										<p>' .$row['Description']. '</p>
+									</div>
+								</div>
+							</a>
+						</li> ';
+						}				
+					}
+				}
 
+				//select continent and country
+				else if($continent != "0" && $country != "0"){	
+					$sql6 = "SELECT * FROM ImageDetails WHERE ContinentCode = '".$continent."' and CountryCodeISO = '".$country."'";
+					$result6 = $conn->query($sql6);	
+					if($result6->num_rows > 0){
+						while($row = $result6->fetch_assoc()) {
+							echo '<li>
+								<a href="detail.php?id='.$row['ImageID'].'" class="img-responsive">
+								<img src="images/square-medium/'.$row['Path'].'" alt="' .$row['Title']. '">
+								<div class="caption">
+									<div class="blur"></div>
+									<div class="caption-text">
+										<p>' .$row['Description']. '</p>
+									</div>
+								</div>
+							</a>
+						</li> ';
+						}			
+					}					
+				}	
+			}
+
+			//filter button not clicked
+			else{
+				$sql7 = "SELECT * FROM ImageDetails";
+				$result7 = $conn->query($sql7);					
+				if($result7->num_rows > 0){
+					while($row = $result7->fetch_assoc()) {
+						echo '<li>
+							<a href="detail.php?id='.$row['ImageID'].'" class="img-responsive">
+							<img src="images/square-medium/'.$row['Path'].'" alt="' .$row['Title']. '">
+							<div class="caption">
+								<div class="blur"></div>
+								<div class="caption-text">
+									<p>' .$row['Description']. '</p>
+								</div>
+							</div>
+						</a>
+					</li> ';
+					}			
+				}
+			}	
+			
             //****** Hint ******
             /* use while loop to display images that meet requirements ... sample below ... replace ???? with field data
             <li>
